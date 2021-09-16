@@ -5,6 +5,7 @@ import Pages.LeftNav;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.apache.commons.lang3.RandomStringUtils;
 
 public class _02_CountrySteps {
 
@@ -33,9 +34,12 @@ public class _02_CountrySteps {
 
     @When("^Create a country name as \"([^\"]*)\" code as \"([^\"]*)\"$")
     public void create_a_country_name_as_code_as(String name, String code)  {
+        String randomGenName= RandomStringUtils.randomAlphabetic(8);
+        String randomGenCode= RandomStringUtils.randomAlphabetic(4);
+
         dc.findAndClick("addButton");
-        dc.findAndSend("nameInput",name);
-        dc.findAndSend("codeInput",code);
+        dc.findAndSend("nameInput",randomGenName);
+        dc.findAndSend("codeInput",randomGenCode);
         dc.findAndClick("saveButton");
     }
 
